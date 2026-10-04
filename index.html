@@ -2,33 +2,90 @@
 <html>
 
 <head>
-    <title>Ejemplo</title>
     <meta charset="utf-8">
-    <script type="text/javascript">
-
-        function vaciar() {
-            document.getElementById("n1").value = "";
-        }
-
-        function cuadrado() {
-            let num = document.getElementById("n1");
-            num.value = num.value * num.value;
-        }
-
-        function inverso() {
-            let num = document.getElementById("n1");
-            num.value = 1 / num.value;
-        }
-    </script>
+    <title>Calculadora pequeña</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="script.js"></script>
 </head>
 
 <body>
+    <div class="calculadora">
+        <header>
+            <h1>Calculadora pequeña</h1>
+            <p class="ayuda">Escribe un número (los decimales con punto, ej: 3.5) o una lista de números separados por comas (ej: 3,1,2).</p>
+        </header>
 
-    Número:
-    <input type="text" id="n1" onclick="vaciar()">
-    <br><br>
-    <button onclick="cuadrado()">x<sup>2</sup></button>
-    <button onclick="inverso()"> 1/x </button>
+        <!-- PANTALLA -->
+        <section class="pantalla">
+            <span id="pendiente"></span>
+            <input type="text" id="n1" class="display">
+            <h2 id="info" class="big" title="Información sobre el número">Información sobre el número</h2>
+            <p id="detalle"></p>
+        </section>
+
+        <!-- OPERACIONES UNARIAS -->
+        <section class="grupo">
+            <h3>Operaciones unarias</h3>
+            <div class="botones">
+                <button id="square">x²</button>
+                <button id="cube">x³</button>
+                <button id="modulo">|x|</button>
+                <button id="factorial">n!</button>
+                <button id="raiz">√x</button>
+                <button id="inverso">1/x</button>
+            </div>
+            <div class="fila">
+                Exponente: <input type="text" id="exponente" class="campo">
+                <button id="potencia">xʸ</button>
+            </div>
+        </section>
+
+        <!-- OPERACIONES BINARIAS -->
+        <section class="grupo">
+            <h3>Operaciones binarias</h3>
+            <div class="botones binarias">
+                <button id="addition">+</button>
+                <button id="subtraction">−</button>
+                <button id="multiplication">×</button>
+                <button id="division">÷</button>
+                <button id="vaciar">C</button>
+                <button id="reiniciar">AC</button>
+                <button id="igual">=</button>
+            </div>
+        </section>
+
+        <!-- OPERACIONES CON LISTAS CSV -->
+        <section class="grupo">
+            <h3>Operaciones con listas CSV</h3>
+            <div class="botones">
+                <button id="sum">Sumar</button>
+                <button id="media">Media</button>
+                <button id="sort">Ordenar</button>
+                <button id="reverse">Invertir</button>
+                <button id="removelast">Quitar último</button>
+            </div>
+            <div class="fila">
+                Valor(es) a eliminar: <input type="text" id="elemento" class="campo">
+                <button id="eliminar">Eliminar</button>
+            </div>
+        </section>
+
+        <!-- TECLADO -->
+        <section class="grupo">
+            <h3>Uso con teclado</h3>
+            <ul class="ayuda">
+                <li>Tab: pasa de un botón a otro. Enter o Espacio: pulsa el botón seleccionado.</li>
+                <li>En la pantalla: Enter calcula el resultado (=). Escape borra la pantalla.</li>
+            </ul>
+        </section>
+
+        <!-- REGISTRO DE ERRORES -->
+        <section class="grupo">
+            <h3>Registro de errores (<span id="num-errores">0</span>)</h3>
+            <ol id="lista-errores"></ol>
+            <button id="limpiar-registro">Vaciar registro</button>
+        </section>
+    </div>
 </body>
 
 </html>
